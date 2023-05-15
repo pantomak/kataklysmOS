@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: acmeloader
+  labels:
+    jmeter_mode: acmeloader
+spec:
+  # replicas: 152
+  replicas: 4
+  selector:
+    matchLabels:
+      jmeter_mode: acmeloader
+  template:
+    metadata:
+      labels:
+        jmeter_mode: acmeloader
+    spec:
+      containers:
+        - name: acmeloader
+          image: testframeworkacrcdcab.azurecr.io/testframework/acmeloader:1
+          env: 
+            - name: "thread_count"
+              value: "100"
+            - name: "loop_count"
+              value: "10000"
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              memory: 2G
+            limits:
+              memory: 2G
+      tolerations:
+      - key: "sku"
+        operator: "Equal"
+        value: "acmeloader"
+        effect: "NoSchedule"
