@@ -37,7 +37,7 @@
         <collectionProp name="Arguments.arguments">
           <elementProp name="mainurl" elementType="Argument">
             <stringProp name="Argument.name">mainurl</stringProp>
-            <stringProp name="Argument.value">fitness-store-prod-vnet-catalog-service.private.azuremicroservices.io</stringProp>
+            <stringProp name="Argument.value">fitness-store-prod-vnet-catalog-service-3.private.azuremicroservices.io</stringProp>
             <stringProp name="Argument.metadata">=</stringProp>
           </elementProp>
           <elementProp name="threads" elementType="Argument">
