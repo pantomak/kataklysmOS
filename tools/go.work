@@ -1,6 +1,8 @@
 go 1.20
 
 use (
+	./core
+	./k8smanager
 	./katactl/
 	./provisioner
 )

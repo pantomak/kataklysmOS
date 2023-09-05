@@ -1,0 +1,61 @@
+{{ if .Values.azure }} 
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: azure-influx-disk
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: managed-premium
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: azure-grafana-disk
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: managed-premium
+  resources:
+    requests:
+      storage: 10Gi
+{{ end }}
+
+{{ if .Values.local }}
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: azure-influx-disk
+  labels:
+    type: local
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: local-path
+  hostPath:
+    path: /tmp/influxvol
+  resources:
+    requests:
+      storage: 10Gi
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: azure-grafana-disk
+  labels:
+    type: local
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: local-path
+  hostPath:
+    path: /tmp/grafanavol
+  resources:
+    requests:
+      storage: 10Gi
+
+{{ end }}

@@ -1,5 +1,6 @@
 package provisioner
 
 type K8sCluster struct {
-	apiUrl string
+	apiUrl   string
+	registry string
 }
